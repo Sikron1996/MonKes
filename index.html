@@ -1,271 +1,148 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>BOME AI</title>
-  <link rel="icon" href="character-1.png" />
-  <style>
-    *{box-sizing:border-box}
-    html,body{margin:0;padding:0}
-    body{font-family:Arial Black, Arial, sans-serif}
-
-    /* --- pixel separators --- */
-    .px-sep{
-      height:64px;
-      background:repeating-linear-gradient(90deg,#000 0,#000 16px,transparent 16px,transparent 32px);
-    }
-    .px-noise{
-      position:absolute;left:0;right:0;height:64px;
-      background:repeating-linear-gradient(90deg,#000 0,#000 16px,transparent 16px,transparent 32px);
-    }
-    .px-noise.top{top:0}
-    .px-noise.bottom{bottom:0}
-
-    /* --- hero --- */
-    .hero{
-      height:100vh;
-      position:relative;
-      overflow:hidden;
-      color:#fff;
-      background:url('hero-bg.jpg') center bottom/cover no-repeat;
-    }
-    .brand{
-      position:absolute;left:32px;top:22px;
-      font-weight:900;font-size:20px;letter-spacing:.5px;
-    }
-    .nav{
-      position:absolute;top:24px;left:50%;transform:translateX(-50%);
-      display:flex;gap:34px;font-size:15px;
-    }
-    .nav a{color:#fff;text-decoration:none}
-    .hero h1{
-      position:absolute;top:34%;left:50%;transform:translateX(-50%);
-      font-size:56px;letter-spacing:1px;text-shadow:4px 4px #000;margin:0;
-    }
-    .cta{
-      position:absolute;top:52%;left:50%;transform:translateX(-50%);
-      padding:14px 34px;background:#fff;color:#000;
-      border:4px solid #000;border-radius:44px;font-weight:900;
-      user-select:none;
-    }
-    .hero .char{
-      position:absolute;bottom:-6px;right:12%;
-      width:330px;max-width:42vw;
-    }
-    .hero .px-noise.bottom{bottom:0}
-
-    /* --- sections --- */
-    section{position:relative;overflow:hidden}
-    .pink{background:#ff9ad5;padding:120px 20px}
-    .teal{background:#35e3d0;padding:120px 20px}
-    .title{
-      text-align:center;
-      font-size:56px;
-      margin:0 0 64px 0;
-      letter-spacing:1px;
-    }
-
-    /* --- about (speech bubble) --- */
-    .about-wrap{
-      max-width:1100px;margin:0 auto;
-      display:flex;gap:60px;align-items:center;justify-content:center;
-    }
-    .bubble{
-      background:#fff;border:6px solid #000;border-radius:44px;
-      padding:40px 46px;
-      font-family:Arial, sans-serif;font-size:18px;line-height:1.55;color:#111;
-      position:relative;max-width:720px;
-    }
-    .bubble:after{
-      content:"";position:absolute;left:-40px;top:60%;
-      width:0;height:0;border-top:20px solid transparent;border-bottom:20px solid transparent;border-right:40px solid #000;
-    }
-    .bubble:before{
-      content:"";position:absolute;left:-32px;top:60%;
-      width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-right:32px solid #fff;
-    }
-    .about-wrap img{width:320px;max-width:40vw}
-
-    /* --- tokenomics stickers --- */
-    .cards{
-      display:flex;justify-content:center;gap:60px;flex-wrap:wrap;
-    }
-    .card{
-      width:260px;background:#fff;border:6px solid #000;border-radius:34px;
-      padding:28px 22px;text-align:center;
-      transform:rotate(-6deg);
-    }
-    .card:nth-child(2){transform:rotate(5deg)}
-    .card:nth-child(3){transform:rotate(-3deg)}
-    .card img{width:120px;margin-bottom:8px}
-    .card h3{margin:8px 0 10px 0;font-size:22px}
-    .card .val{font-size:26px}
-
-    /* --- roadmap --- */
-    .road-wrap{
-      max-width:1100px;margin:0 auto;
-      display:flex;gap:80px;align-items:flex-start;justify-content:center;
-    }
-    .steps{display:flex;flex-direction:column;gap:28px}
-    .step{
-      width:360px;background:#fff;border:6px solid #000;border-radius:34px;
-      padding:26px 32px;
-      font-family:Arial, sans-serif;font-size:18px;color:#111;
-      transform:rotate(-2deg);
-    }
-    .step:nth-child(2){transform:rotate(2deg)}
-    .step:nth-child(3){transform:rotate(-1deg)}
-    .num{font-family:Arial Black, Arial, sans-serif;font-size:22px;margin-bottom:6px}
-    .road-wrap img{width:260px;max-width:38vw}
-
-    /* --- FAQ accordion --- */
-    .faq-wrap{
-      max-width:1100px;margin:0 auto;
-      display:flex;gap:80px;align-items:flex-start;justify-content:center;
-    }
-    .faq{flex:1;min-width:320px}
-    .item{
-      background:#fff;border:6px solid #000;border-radius:30px;
-      padding:22px 26px;margin-bottom:22px;
-      font-family:Arial, sans-serif;color:#111;
-      cursor:pointer;
-    }
-    .q{
-      display:flex;justify-content:space-between;align-items:center;
-      font-weight:900;
-    }
-    .a{display:none;margin-top:12px;font-size:16px;line-height:1.45}
-    .item.open .a{display:block}
-    .arrow{font-family:Arial Black, Arial, sans-serif;font-size:22px}
-    .faq-wrap img{width:260px;max-width:38vw}
-
-    .footer{
-      background:#6a2cbf;color:#fff;text-align:center;padding:44px 20px;
-      font-family:Arial, sans-serif;
-    }
-
-    /* --- mobile --- */
-    @media(max-width:900px){
-      .nav{display:none}
-      .hero h1{font-size:44px;top:30%}
-      .cta{top:46%}
-      .hero .char{right:50%;transform:translateX(50%);width:240px}
-      .about-wrap,.road-wrap,.faq-wrap{flex-direction:column;gap:40px;align-items:center}
-      .bubble:after,.bubble:before{display:none}
-      .title{font-size:44px}
-    }
-  </style>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>SOLLY • Official Site</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+  <div class="bg-rays" aria-hidden="true"></div>
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="brand">BOME AI</div>
+  <header class="topbar">
     <nav class="nav">
-      <a href="#how">How to buy</a>
-      <a href="#tokenomics">Tokenomics</a>
-      <a href="#roadmap">Roadmap</a>
-      <a href="#faq">FAQ</a>
+      <a class="nav__link" href="#home">HOME</a>
+      <a class="nav__link" href="#tokenomics">TOKENOMICS</a>
+      <div class="nav__brand">SOLLY</div>
+      <a class="nav__link" href="#details">DETAILS</a>
+      <a class="nav__link" href="#social">SOCIAL</a>
     </nav>
+  </header>
 
-    <h1>BOME AI</h1>
-    <div class="cta">BUY</div>
-    <img class="char" src="character-1.png" alt="character" />
+  <main id="home">
+    <!-- HERO -->
+    <section class="hero">
+      <div class="hero__inner">
+        <h1 class="hero__title">
+          <span>S</span><span>O</span><span>L</span><span>L</span><span>Y</span>
+        </h1>
 
-    <div class="px-noise bottom"></div>
-  </section>
+        <p class="hero__text">
+          SOLLY IS THE LEGENDARY CHARACTER INSPIRED BY<br/>
+          MATT FURIE'S BOYS' CLUB COMIC.
+        </p>
 
-  <!-- ABOUT / HOW TO BUY -->
-  <section class="pink" id="how">
-    <div class="px-noise top"></div>
-
-    <div class="title">ABOUT US</div>
-    <div class="about-wrap">
-      <img src="character-1.png" alt="character" />
-      <div class="bubble">
-        BOME AI is a meme-powered project inspired by iconic internet culture. Built for community, fun and long-term growth.
-      </div>
-    </div>
-
-    <div class="px-noise bottom"></div>
-  </section>
-
-  <!-- TOKENOMICS -->
-  <section class="teal" id="tokenomics">
-    <div class="px-noise top"></div>
-
-    <div class="title">TOKENOMICS</div>
-    <div class="cards">
-      <div class="card">
-        <img src="character-2.png" alt="sticker" />
-        <h3>NAME</h3>
-        <div class="val">BOME AI</div>
-      </div>
-      <div class="card">
-        <img src="character-2.png" alt="sticker" />
-        <h3>SYMBOL</h3>
-        <div class="val">$BOME</div>
-      </div>
-      <div class="card">
-        <img src="character-2.png" alt="sticker" />
-        <h3>TAX</h3>
-        <div class="val">0% / 0%</div>
-      </div>
-    </div>
-
-    <div class="px-noise bottom"></div>
-  </section>
-
-  <!-- ROADMAP -->
-  <section class="teal" id="roadmap">
-    <div class="px-noise top"></div>
-
-    <div class="title">ROADMAP</div>
-    <div class="road-wrap">
-      <div class="steps">
-        <div class="step"><div class="num">01</div>Launch & Community</div>
-        <div class="step"><div class="num">02</div>Listings & Growth</div>
-        <div class="step"><div class="num">03</div>Expansion</div>
-      </div>
-      <img src="character-2.png" alt="character" />
-    </div>
-
-    <div class="px-noise bottom"></div>
-  </section>
-
-  <!-- FAQ -->
-  <section class="pink" id="faq">
-    <div class="px-noise top"></div>
-
-    <div class="title">FAQ</div>
-    <div class="faq-wrap">
-      <div class="faq">
-        <div class="item">
-          <div class="q">What is BOME AI?<span class="arrow">+</span></div>
-          <div class="a">A meme-powered project inspired by internet culture.</div>
+        <div class="hero__btns">
+          <a class="btn btn--pill" href="#" target="_blank" rel="noreferrer">TELEGRAM</a>
+          <a class="btn btn--square" href="#" target="_blank" rel="noreferrer" aria-label="X">
+            <span class="x-icon">X</span>
+          </a>
         </div>
-        <div class="item">
-          <div class="q">Is BOME AI free?<span class="arrow">+</span></div>
-          <div class="a">Yes, community-driven and open.</div>
-        </div>
-        <div class="item">
-          <div class="q">How to buy?<span class="arrow">+</span></div>
-          <div class="a">Press BUY and follow your own launch flow.</div>
+
+        <div class="hero__imgWrap">
+          <img class="hero__img" src="hero-monkey.png" alt="Hero character" />
         </div>
       </div>
-      <img src="character-1.png" alt="character" />
-    </div>
+    </section>
 
-    <div class="px-noise bottom"></div>
-  </section>
+    <!-- ABOUT -->
+    <section id="details" class="about">
+      <div class="about__inner">
+        <div class="about__art">
+          <img src="section-monkey1.png" alt="Solly art" />
+        </div>
 
-  <div class="footer">© BOME AI</div>
+        <div class="about__copy">
+          <div class="about__headline">$SOLLY</div>
+          <div class="about__p">
+            SOLLY IS THE LEGENDARY CHARACTER INSPIRED BY MATT FURIE'S
+            BOYS' CLUB COMIC. SOLLY IS HERE TO MAKE MEMECOINS GREAT AGAIN.
+            LAUNCHED STEALTH WITH NO PRESALE. ZERO TAXES, LP BURNT AND CONTRACT RENOUNCED.
+          </div>
+          <div class="about__p">
+            SOLLY IS A COIN FOR THE PEOPLE, FOREVER. NOW HE IS LIVING
+            ON THE SOLANA BLOCKCHAIN AS A FAN TRIBUTE. HE HAS BECOME
+            PURPLE MASCOT OF THE PURPLE CHAIN, SOLANA. FUELED BY PURE
+            MEMETIC POWER. LET $SOLLY SHOW YOU THE WAY.
+          </div>
+        </div>
+      </div>
+    </section>
 
-  <script>
-    document.querySelectorAll('.item').forEach(item => {
-      item.addEventListener('click', () => item.classList.toggle('open'));
-    });
-  </script>
+    <!-- TOKENOMICS -->
+    <section id="tokenomics" class="tokenomics">
+      <div class="tokenomics__inner">
+        <h2 class="sectionTitle">TOKENOMICS</h2>
+        <div class="sectionSubtitle">NEVER FORGET ABOUT CONTRACT DETAILS!</div>
+
+        <div class="tokenomics__grid">
+          <div class="cards">
+            <div class="card">
+              <img src="token-card1.png" alt="Supply" />
+              <div class="card__label">SUPPLY</div>
+              <div class="card__value">999,999,999</div>
+            </div>
+            <div class="card">
+              <img src="token-card2.png" alt="Contract" />
+              <div class="card__label">CONTRACT</div>
+              <div class="card__value">REVOKED</div>
+            </div>
+            <div class="card">
+              <img src="token-card3.png" alt="Tax" />
+              <div class="card__label">TAX</div>
+              <div class="card__value">0% BUY 0% SELL</div>
+            </div>
+          </div>
+
+          <div class="tokenomics__side">
+            <img src="token-side.png" alt="Solly is live" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LINKS + CONTRACT -->
+    <section id="social" class="links">
+      <div class="links__inner">
+        <div class="links__icons">
+          <a class="iconBtn" href="#" target="_blank" rel="noreferrer"><img src="icon-telegram.png" alt="Telegram"/></a>
+          <a class="iconBtn" href="#" target="_blank" rel="noreferrer"><img src="icon-x.png" alt="X"/></a>
+          <a class="iconBtn" href="#" target="_blank" rel="noreferrer"><img src="icon-dex.png" alt="DEX"/></a>
+        </div>
+
+        <div class="contractBlock">
+          <div class="contractBlock__label">CONTRACT:</div>
+          <button class="contractBlock__value" id="copyContract" type="button" data-contract="2CKMZLXF8MFZ7AFK2RCFYMGMREUXx26FBOYQS7MXPFVEM">
+            <span class="contractText">2CKMZLXF8MFZ7AFK2RCFYMGMREUXx26FBOYQS7MXPFVEM</span>
+          </button>
+          <div class="contractBlock__hint" id="copyHint">Tap to copy</div>
+        </div>
+
+        <div class="links__art">
+          <img src="idea-monkey.png" alt="Idea" />
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer__inner">
+        <img class="footer__corner footer__corner--left" src="footer-left.png" alt="" />
+        <img class="footer__corner footer__corner--right" src="footer-right.png" alt="" />
+
+        <div class="footer__title">SOLLY — OFFICIAL SITE</div>
+        <div class="footer__disclaimer">
+          GET THIS MEME! IT'S SHAKING THINGS UP BIG TIME IN SOLANA, RIGHT? WE ARE GOING HIGH AND NOT GOING BACK.
+          THE INFORMATION PROVIDED IN THIS DISCLAIMER DOES NOT CONSTITUTE INVESTMENT ADVICE, FINANCIAL ADVICE, TRADING ADVICE,
+          USAGE OR PLAYING ADVICE OR ANY OTHER SORT OF ADVICE.
+        </div>
+      </div>
+    </footer>
+  </main>
+
+  <script src="script.js"></script>
 </body>
 </html>
