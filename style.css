@@ -250,3 +250,50 @@ body{
   .supply__value{font-size:52px}
   .icon{width:44px}
 }
+
+
+/* === FIX SOCIAL ICONS === */
+.social {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.icon {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent !important;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
+  padding: 0;
+  border-radius: 12px;
+  transition: transform .2s ease, box-shadow .2s ease;
+}
+
+.icon img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  background: transparent;
+  border-radius: 12px;
+}
+
+.icon:hover {
+  transform: scale(1.08);
+  box-shadow: 0 0 12px rgba(255,255,255,.25),
+              0 0 24px rgba(255,255,255,.15);
+}
+
+.icon:focus,
+.icon:active {
+  outline: none !important;
+  box-shadow: none !important;
+}
+
+a {
+  -webkit-tap-highlight-color: transparent;
+}
