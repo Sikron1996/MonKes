@@ -7,96 +7,116 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 *{box-sizing:border-box}
-body{margin:0;font-family:'Arial Black',Arial,sans-serif;background:#6a2cbf}
-section{padding:110px 20px;position:relative}
-h1,h2{text-transform:uppercase}
-.hero{background:url('bg.jpg') center/cover no-repeat;text-align:center;color:#fff}
-.hero h1{font-size:82px;text-shadow:6px 6px #000}
-.hero img{width:300px;margin-top:30px;animation:float 4s ease-in-out infinite}
-@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
-.btn{display:inline-block;margin:16px;padding:14px 36px;background:#fff;color:#000;
-border:5px solid #000;border-radius:40px;text-decoration:none;font-size:18px}
-.sep{height:60px;background:repeating-linear-gradient(90deg,#000 0,#000 20px,transparent 20px,transparent 40px)}
-.pink{background:#ff9ad5}
-.turq{background:#35e3d0}
-.title{font-size:58px;text-align:center;margin-bottom:40px}
-.box{background:#fff;border:6px solid #000;border-radius:26px;padding:32px;max-width:760px;margin:auto;font-family:Arial}
-.cards{display:flex;gap:26px;justify-content:center;flex-wrap:wrap}
-.card{width:230px;background:#fff;border:6px solid #000;border-radius:26px;padding:24px;text-align:center;transform:rotate(-2deg)}
-.card:nth-child(2){transform:rotate(2deg)}
-.card:nth-child(3){transform:rotate(-1deg)}
-.roadmap{display:flex;flex-direction:column;align-items:center;gap:24px}
-.step{background:#fff;border:6px solid #000;border-radius:26px;padding:20px 26px;width:360px;font-family:Arial}
-.faq-item{background:#fff;border:5px solid #000;border-radius:22px;padding:16px 20px;
-max-width:560px;margin:14px auto;font-family:Arial;cursor:pointer}
-.faq-item p{display:none;margin-top:10px;font-weight:normal}
-.faq-item.active p{display:block}
-.footer{padding:50px;text-align:center;color:#fff}
-@media(max-width:600px){
-.hero h1{font-size:52px}
-.hero img{width:220px}
-.title{font-size:42px}
+body{margin:0;font-family:Arial Black,Arial,sans-serif}
+section{position:relative;overflow:hidden}
+.noise{height:60px;background:repeating-linear-gradient(90deg,#000 0,#000 16px,transparent 16px,transparent 32px)}
+.hero{
+height:100vh;
+background:url('1602.jpeg') center bottom/cover no-repeat;
+color:#fff;
+position:relative;
+}
+.logo{position:absolute;top:22px;left:32px;font-weight:900}
+.nav{position:absolute;top:24px;left:50%;transform:translateX(-50%);display:flex;gap:36px}
+.nav a{color:#fff;text-decoration:none}
+.hero h1{position:absolute;top:34%;left:50%;transform:translateX(-50%);font-size:56px;text-shadow:4px 4px #000}
+.buy{position:absolute;top:52%;left:50%;transform:translateX(-50%);padding:14px 34px;background:#fff;color:#000;border:4px solid #000;border-radius:40px}
+.hero img{position:absolute;bottom:0;right:12%;width:320px}
+
+.pink{background:#ff9ad5;padding:120px 20px}
+.turq{background:#35e3d0;padding:120px 20px}
+.title{text-align:center;font-size:56px;margin-bottom:60px}
+
+.about{max-width:1100px;margin:auto;display:flex;gap:60px;align-items:center}
+.bubble{background:#fff;border:6px solid #000;border-radius:40px;padding:40px;font-family:Arial}
+
+.cards{display:flex;justify-content:center;gap:60px;flex-wrap:wrap}
+.card{background:#fff;border:6px solid #000;border-radius:32px;padding:28px;width:260px;text-align:center;transform:rotate(-6deg)}
+.card:nth-child(2){transform:rotate(5deg)}
+.card:nth-child(3){transform:rotate(-3deg)}
+.card img{width:120px}
+
+.road{max-width:1100px;margin:auto;display:flex;gap:80px;justify-content:center}
+.steps{display:flex;flex-direction:column;gap:28px}
+.step{background:#fff;border:6px solid #000;border-radius:32px;padding:26px;width:360px;font-family:Arial}
+
+.faqwrap{max-width:1100px;margin:auto;display:flex;gap:80px}
+.item{background:#fff;border:6px solid #000;border-radius:28px;padding:22px;margin-bottom:22px;cursor:pointer;font-family:Arial}
+.item .a{display:none;margin-top:12px}
+.item.open .a{display:block}
+
+.footer{text-align:center;padding:40px;background:#6a2cbf;color:#fff}
+
+@media(max-width:900px){
+.about,.road,.faqwrap{flex-direction:column;align-items:center}
 }
 </style>
 </head>
 <body>
 
 <section class="hero">
+<div class="logo">MonKes</div>
+<div class="nav">
+<a href="#">How to buy</a><a href="#">Tokenomics</a><a href="#">Roadmap</a><a href="#">FAQ</a>
+</div>
 <h1>MonKes</h1>
-<img src="ape1.png"><br>
-<a class="btn" href="#">BUY</a>
-<a class="btn" href="#">LAUNCH</a><br>
-<a class="btn" href="https://x.com/monkeschain" target="_blank">X / Twitter</a>
+<div class="buy">BUY</div>
+<img src="1333.png">
+<div class="noise"></div>
 </section>
-
-<div class="sep"></div>
 
 <section class="pink">
-<h2 class="title">About Us</h2>
-<div class="box">
-<b>MonKes</b> is a high-energy meme ecosystem inspired by classic crypto culture.
-Built for community, fun and viral growth.
+<div class="noise"></div>
+<div class="about">
+<img src="1333.png" width="320">
+<div class="bubble">MonKes is a meme-powered crypto project inspired by iconic internet culture.</div>
 </div>
+<div class="noise"></div>
 </section>
 
-<div class="sep"></div>
-
 <section class="turq">
-<h2 class="title">Tokenomics</h2>
+<div class="noise"></div>
+<h2 class="title">TOKENOMICS</h2>
 <div class="cards">
-<div class="card">NAME<br><b>MonKes</b></div>
-<div class="card">SYMBOL<br><b>$MONKES</b></div>
-<div class="card">TAX<br><b>0% / 0%</b></div>
+<div class="card"><img src="1332.png"><br>NAME<br><b>MonKes</b></div>
+<div class="card"><img src="1332.png"><br>SYMBOL<br><b>$MONKES</b></div>
+<div class="card"><img src="1332.png"><br>TAX<br><b>0% / 0%</b></div>
 </div>
+<div class="noise"></div>
 </section>
-
-<div class="sep"></div>
 
 <section class="turq">
-<h2 class="title">Roadmap</h2>
-<div class="roadmap">
-<div class="step">01 — Launch & Community</div>
-<div class="step">02 — Listings & Growth</div>
-<div class="step">03 — Expansion</div>
-<img src="ape2.png" width="240">
+<div class="noise"></div>
+<h2 class="title">ROADMAP</h2>
+<div class="road">
+<div class="steps">
+<div class="step">01 Launch & Community</div>
+<div class="step">02 Listings & Growth</div>
+<div class="step">03 Expansion</div>
 </div>
+<img src="1332.png" width="260">
+</div>
+<div class="noise"></div>
 </section>
 
-<div class="sep"></div>
-
 <section class="pink">
+<div class="noise"></div>
 <h2 class="title">FAQ</h2>
-<div class="faq-item"><b>What is MonKes?</b><p>MonKes is a meme-powered crypto community project.</p></div>
-<div class="faq-item"><b>Is MonKes free?</b><p>Yes, community-driven and open.</p></div>
-<div class="faq-item"><b>How to buy?</b><p>BUY button will redirect to launch platform.</p></div>
+<div class="faqwrap">
+<div>
+<div class="item"><b>What is MonKes?</b><div class="a">Meme crypto project.</div></div>
+<div class="item"><b>Is MonKes free?</b><div class="a">Yes.</div></div>
+<div class="item"><b>How to buy?</b><div class="a">Use BUY button.</div></div>
+</div>
+<img src="1333.png" width="260">
+</div>
+<div class="noise"></div>
 </section>
 
 <div class="footer">© MonKes</div>
 
 <script>
-document.querySelectorAll('.faq-item').forEach(i=>{
- i.onclick=()=>i.classList.toggle('active')
-})
+document.querySelectorAll('.item').forEach(i=>i.onclick=()=>i.classList.toggle('open'))
 </script>
 
 </body>
