@@ -3,144 +3,85 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>SOLLY • Official Site</title>
+  <title>FRODO • The Virtual Samurai</title>
+
+  <!-- chunky headline font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <div class="bg-rays" aria-hidden="true"></div>
-
-  <header class="topbar">
-    <nav class="nav">
-      <a class="nav__link" href="#home">HOME</a>
-      <a class="nav__link" href="#tokenomics">TOKENOMICS</a>
-      <div class="nav__brand">SOLLY</div>
-      <a class="nav__link" href="#details">DETAILS</a>
-      <a class="nav__link" href="#social">SOCIAL</a>
-    </nav>
-  </header>
-
-  <main id="home">
-    <!-- HERO -->
+  <main class="page">
     <section class="hero">
-      <div class="hero__inner">
-        <h1 class="hero__title">
-          <span>S</span><span>O</span><span>L</span><span>L</span><span>Y</span>
-        </h1>
+      <div class="card">
+        <div class="card__inner">
+          <div class="brand">FRODO</div>
 
-        <p class="hero__text">
-          SOLLY IS THE LEGENDARY CHARACTER INSPIRED BY<br/>
-          MATT FURIE'S BOYS' CLUB COMIC.
-        </p>
+          <div class="grid">
+            <!-- LEFT -->
+            <div class="left">
+              <h1 class="title">
+                <span>FRODO</span>
+                <span>THE VIRTUAL</span>
+                <span>SAMURAI</span>
+              </h1>
 
-        <div class="hero__btns">
-          <a class="btn btn--pill" href="#" target="_blank" rel="noreferrer">TELEGRAM</a>
-          <a class="btn btn--square" href="#" target="_blank" rel="noreferrer" aria-label="X">
-            <span class="x-icon">X</span>
-          </a>
-        </div>
+              <p class="sub">
+                ARMED WITH CUTTING-EDGE AI AND THE<br/>
+                DISCIPLINE OF A SAMURAI, FRODO ROSE TO LEAD<br/>
+                THE EVOLUTION OF MEMECOINS.
+              </p>
 
-        <div class="hero__imgWrap">
-          <img class="hero__img" src="1332.png" alt="Hero character" />
-        </div>
-      </div>
-    </section>
-
-    <!-- ABOUT -->
-    <section id="details" class="about">
-      <div class="about__inner">
-        <div class="about__art">
-          <img src="section-monkey1.png" alt="Solly art" />
-        </div>
-
-        <div class="about__copy">
-          <div class="about__headline">$SOLLY</div>
-          <div class="about__p">
-            SOLLY IS THE LEGENDARY CHARACTER INSPIRED BY MATT FURIE'S
-            BOYS' CLUB COMIC. SOLLY IS HERE TO MAKE MEMECOINS GREAT AGAIN.
-            LAUNCHED STEALTH WITH NO PRESALE. ZERO TAXES, LP BURNT AND CONTRACT RENOUNCED.
-          </div>
-          <div class="about__p">
-            SOLLY IS A COIN FOR THE PEOPLE, FOREVER. NOW HE IS LIVING
-            ON THE SOLANA BLOCKCHAIN AS A FAN TRIBUTE. HE HAS BECOME
-            PURPLE MASCOT OF THE PURPLE CHAIN, SOLANA. FUELED BY PURE
-            MEMETIC POWER. LET $SOLLY SHOW YOU THE WAY.
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TOKENOMICS -->
-    <section id="tokenomics" class="tokenomics">
-      <div class="tokenomics__inner">
-        <h2 class="sectionTitle">TOKENOMICS</h2>
-        <div class="sectionSubtitle">NEVER FORGET ABOUT CONTRACT DETAILS!</div>
-
-        <div class="tokenomics__grid">
-          <div class="cards">
-            <div class="card">
-              <img src="token-card1.png" alt="Supply" />
-              <div class="card__label">SUPPLY</div>
-              <div class="card__value">999,999,999</div>
+              <a class="btn" href="#" aria-label="Buy now">
+                BUY NOW
+              </a>
             </div>
-            <div class="card">
-              <img src="token-card2.png" alt="Contract" />
-              <div class="card__label">CONTRACT</div>
-              <div class="card__value">REVOKED</div>
-            </div>
-            <div class="card">
-              <img src="token-card3.png" alt="Tax" />
-              <div class="card__label">TAX</div>
-              <div class="card__value">0% BUY 0% SELL</div>
+
+            <!-- RIGHT -->
+            <div class="right">
+              <!-- Replace this image with your character art (keep transparent PNG for best result) -->
+              <img class="character" src="assets/character.png" alt="Character" />
             </div>
           </div>
 
-          <div class="tokenomics__side">
-            <img src="token-side.png" alt="Solly is live" />
+          <div class="meta">
+            <div class="social">
+              <!-- icon buttons (replace href + SVGs as needed) -->
+              <a class="icon" href="#" aria-label="X">
+                <span>X</span>
+              </a>
+              <a class="icon" href="#" aria-label="Icon 2">
+                <span>★</span>
+              </a>
+              <a class="icon" href="#" aria-label="Icon 3">
+                <span>〰</span>
+              </a>
+              <a class="icon" href="#" aria-label="Icon 4">
+                <span>◎</span>
+              </a>
+              <a class="icon" href="#" aria-label="Icon 5">
+                <span>⌁</span>
+              </a>
+            </div>
+
+            <div class="ca">
+              <span class="ca__label">CA:</span>
+              <span class="ca__value" id="caValue">0x11169…5073744</span>
+              <button class="copy" id="copyBtn" type="button" aria-label="Copy contract address">
+                ⧉
+              </button>
+            </div>
           </div>
         </div>
       </div>
-    </section>
 
-    <!-- LINKS + CONTRACT -->
-    <section id="social" class="links">
-      <div class="links__inner">
-        <div class="links__icons">
-          <a class="iconBtn" href="#" target="_blank" rel="noreferrer"><img src="icon-telegram.png" alt="Telegram"/></a>
-          <a class="iconBtn" href="#" target="_blank" rel="noreferrer"><img src="icon-x.png" alt="X"/></a>
-          <a class="iconBtn" href="#" target="_blank" rel="noreferrer"><img src="icon-dex.png" alt="DEX"/></a>
-        </div>
-
-        <div class="contractBlock">
-          <div class="contractBlock__label">CONTRACT:</div>
-          <button class="contractBlock__value" id="copyContract" type="button" data-contract="2CKMZLXF8MFZ7AFK2RCFYMGMREUXx26FBOYQS7MXPFVEM">
-            <span class="contractText">2CKMZLXF8MFZ7AFK2RCFYMGMREUXx26FBOYQS7MXPFVEM</span>
-          </button>
-          <div class="contractBlock__hint" id="copyHint">Tap to copy</div>
-        </div>
-
-        <div class="links__art">
-          <img src="idea-monkey.png" alt="Idea" />
-        </div>
+      <div class="supply">
+        <div class="supply__label">TOTAL SUPPLY:</div>
+        <div class="supply__value">5,000,000,000</div>
       </div>
     </section>
-
-    <!-- FOOTER -->
-    <footer class="footer">
-      <div class="footer__inner">
-        <img class="footer__corner footer__corner--left" src="footer-left.png" alt="" />
-        <img class="footer__corner footer__corner--right" src="footer-right.png" alt="" />
-
-        <div class="footer__title">SOLLY — OFFICIAL SITE</div>
-        <div class="footer__disclaimer">
-          GET THIS MEME! IT'S SHAKING THINGS UP BIG TIME IN SOLANA, RIGHT? WE ARE GOING HIGH AND NOT GOING BACK.
-          THE INFORMATION PROVIDED IN THIS DISCLAIMER DOES NOT CONSTITUTE INVESTMENT ADVICE, FINANCIAL ADVICE, TRADING ADVICE,
-          USAGE OR PLAYING ADVICE OR ANY OTHER SORT OF ADVICE.
-        </div>
-      </div>
-    </footer>
   </main>
 
   <script src="script.js"></script>
