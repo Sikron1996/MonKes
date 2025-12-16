@@ -1,83 +1,103 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
 <title>MonKes</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" href="bg.jpg">
 <style>
-body{
-margin:0;
-font-family:Arial, sans-serif;
-background:url('bg.jpg') center/cover fixed;
-color:#fff;
-}
-section{
-padding:80px 20px;
-text-align:center;
-}
-.hero{font-size:48px;font-weight:900;}
-.card{
-background:rgba(0,0,0,0.5);
-padding:20px;
-border-radius:20px;
-margin:20px auto;
-max-width:600px;
-}
-a.btn{
-display:inline-block;
-padding:12px 24px;
-background:#fff;
-color:#000;
-border-radius:30px;
-text-decoration:none;
-font-weight:700;
-}
-.footer{
-padding:40px;
-background:rgba(0,0,0,0.6);
+*{box-sizing:border-box}
+body{margin:0;font-family:'Arial Black',Arial,sans-serif;background:#6a2cbf}
+section{padding:110px 20px;position:relative}
+h1,h2{text-transform:uppercase}
+.hero{background:url('bg.jpg') center/cover no-repeat;text-align:center;color:#fff}
+.hero h1{font-size:82px;text-shadow:6px 6px #000}
+.hero img{width:300px;margin-top:30px;animation:float 4s ease-in-out infinite}
+@keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-14px)}}
+.btn{display:inline-block;margin:16px;padding:14px 36px;background:#fff;color:#000;
+border:5px solid #000;border-radius:40px;text-decoration:none;font-size:18px}
+.sep{height:60px;background:repeating-linear-gradient(90deg,#000 0,#000 20px,transparent 20px,transparent 40px)}
+.pink{background:#ff9ad5}
+.turq{background:#35e3d0}
+.title{font-size:58px;text-align:center;margin-bottom:40px}
+.box{background:#fff;border:6px solid #000;border-radius:26px;padding:32px;max-width:760px;margin:auto;font-family:Arial}
+.cards{display:flex;gap:26px;justify-content:center;flex-wrap:wrap}
+.card{width:230px;background:#fff;border:6px solid #000;border-radius:26px;padding:24px;text-align:center;transform:rotate(-2deg)}
+.card:nth-child(2){transform:rotate(2deg)}
+.card:nth-child(3){transform:rotate(-1deg)}
+.roadmap{display:flex;flex-direction:column;align-items:center;gap:24px}
+.step{background:#fff;border:6px solid #000;border-radius:26px;padding:20px 26px;width:360px;font-family:Arial}
+.faq-item{background:#fff;border:5px solid #000;border-radius:22px;padding:16px 20px;
+max-width:560px;margin:14px auto;font-family:Arial;cursor:pointer}
+.faq-item p{display:none;margin-top:10px;font-weight:normal}
+.faq-item.active p{display:block}
+.footer{padding:50px;text-align:center;color:#fff}
+@media(max-width:600px){
+.hero h1{font-size:52px}
+.hero img{width:220px}
+.title{font-size:42px}
 }
 </style>
 </head>
 <body>
 
-<section>
-<div class="hero">MonKes</div>
-<p>AI Meme Ecosystem</p>
-<a class="btn" href="https://x.com/monkeschain" target="_blank">Twitter</a>
+<section class="hero">
+<h1>MonKes</h1>
+<img src="ape1.png"><br>
+<a class="btn" href="#">BUY</a>
+<a class="btn" href="#">LAUNCH</a><br>
+<a class="btn" href="https://x.com/monkeschain" target="_blank">X / Twitter</a>
 </section>
 
-<section>
-<div class="card">
-<h2>About Us</h2>
-<p>MonKes is a meme-driven AI ecosystem built for fun, creativity and community.</p>
+<div class="sep"></div>
+
+<section class="pink">
+<h2 class="title">About Us</h2>
+<div class="box">
+<b>MonKes</b> is a high-energy meme ecosystem inspired by classic crypto culture.
+Built for community, fun and viral growth.
 </div>
 </section>
 
-<section>
-<div class="card">
-<h2>Tokenomics</h2>
-<p>Symbol: $MONKES<br>Tax: 0%</p>
+<div class="sep"></div>
+
+<section class="turq">
+<h2 class="title">Tokenomics</h2>
+<div class="cards">
+<div class="card">NAME<br><b>MonKes</b></div>
+<div class="card">SYMBOL<br><b>$MONKES</b></div>
+<div class="card">TAX<br><b>0% / 0%</b></div>
 </div>
 </section>
 
-<section>
-<div class="card">
-<h2>Roadmap</h2>
-<p>Launch • Community • Expansion</p>
+<div class="sep"></div>
+
+<section class="turq">
+<h2 class="title">Roadmap</h2>
+<div class="roadmap">
+<div class="step">01 — Launch & Community</div>
+<div class="step">02 — Listings & Growth</div>
+<div class="step">03 — Expansion</div>
+<img src="ape2.png" width="240">
 </div>
 </section>
 
-<section>
-<div class="card">
-<h2>FAQ</h2>
-<p>What is MonKes? A meme AI project.</p>
-</div>
+<div class="sep"></div>
+
+<section class="pink">
+<h2 class="title">FAQ</h2>
+<div class="faq-item"><b>What is MonKes?</b><p>MonKes is a meme-powered crypto community project.</p></div>
+<div class="faq-item"><b>Is MonKes free?</b><p>Yes, community-driven and open.</p></div>
+<div class="faq-item"><b>How to buy?</b><p>BUY button will redirect to launch platform.</p></div>
 </section>
 
-<div class="footer">
-© MonKes
-</div>
+<div class="footer">© MonKes</div>
+
+<script>
+document.querySelectorAll('.faq-item').forEach(i=>{
+ i.onclick=()=>i.classList.toggle('active')
+})
+</script>
 
 </body>
 </html>
