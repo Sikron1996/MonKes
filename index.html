@@ -1,123 +1,271 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>MonKes</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<style>
-*{box-sizing:border-box}
-body{margin:0;font-family:Arial Black,Arial,sans-serif}
-section{position:relative;overflow:hidden}
-.noise{height:60px;background:repeating-linear-gradient(90deg,#000 0,#000 16px,transparent 16px,transparent 32px)}
-.hero{
-height:100vh;
-background:url('1602.jpeg') center bottom/cover no-repeat;
-color:#fff;
-position:relative;
-}
-.logo{position:absolute;top:22px;left:32px;font-weight:900}
-.nav{position:absolute;top:24px;left:50%;transform:translateX(-50%);display:flex;gap:36px}
-.nav a{color:#fff;text-decoration:none}
-.hero h1{position:absolute;top:34%;left:50%;transform:translateX(-50%);font-size:56px;text-shadow:4px 4px #000}
-.buy{position:absolute;top:52%;left:50%;transform:translateX(-50%);padding:14px 34px;background:#fff;color:#000;border:4px solid #000;border-radius:40px}
-.hero img{position:absolute;bottom:0;right:12%;width:320px}
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOME AI</title>
+  <link rel="icon" href="character-1.png" />
+  <style>
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0}
+    body{font-family:Arial Black, Arial, sans-serif}
 
-.pink{background:#ff9ad5;padding:120px 20px}
-.turq{background:#35e3d0;padding:120px 20px}
-.title{text-align:center;font-size:56px;margin-bottom:60px}
+    /* --- pixel separators --- */
+    .px-sep{
+      height:64px;
+      background:repeating-linear-gradient(90deg,#000 0,#000 16px,transparent 16px,transparent 32px);
+    }
+    .px-noise{
+      position:absolute;left:0;right:0;height:64px;
+      background:repeating-linear-gradient(90deg,#000 0,#000 16px,transparent 16px,transparent 32px);
+    }
+    .px-noise.top{top:0}
+    .px-noise.bottom{bottom:0}
 
-.about{max-width:1100px;margin:auto;display:flex;gap:60px;align-items:center}
-.bubble{background:#fff;border:6px solid #000;border-radius:40px;padding:40px;font-family:Arial}
+    /* --- hero --- */
+    .hero{
+      height:100vh;
+      position:relative;
+      overflow:hidden;
+      color:#fff;
+      background:url('hero-bg.jpg') center bottom/cover no-repeat;
+    }
+    .brand{
+      position:absolute;left:32px;top:22px;
+      font-weight:900;font-size:20px;letter-spacing:.5px;
+    }
+    .nav{
+      position:absolute;top:24px;left:50%;transform:translateX(-50%);
+      display:flex;gap:34px;font-size:15px;
+    }
+    .nav a{color:#fff;text-decoration:none}
+    .hero h1{
+      position:absolute;top:34%;left:50%;transform:translateX(-50%);
+      font-size:56px;letter-spacing:1px;text-shadow:4px 4px #000;margin:0;
+    }
+    .cta{
+      position:absolute;top:52%;left:50%;transform:translateX(-50%);
+      padding:14px 34px;background:#fff;color:#000;
+      border:4px solid #000;border-radius:44px;font-weight:900;
+      user-select:none;
+    }
+    .hero .char{
+      position:absolute;bottom:-6px;right:12%;
+      width:330px;max-width:42vw;
+    }
+    .hero .px-noise.bottom{bottom:0}
 
-.cards{display:flex;justify-content:center;gap:60px;flex-wrap:wrap}
-.card{background:#fff;border:6px solid #000;border-radius:32px;padding:28px;width:260px;text-align:center;transform:rotate(-6deg)}
-.card:nth-child(2){transform:rotate(5deg)}
-.card:nth-child(3){transform:rotate(-3deg)}
-.card img{width:120px}
+    /* --- sections --- */
+    section{position:relative;overflow:hidden}
+    .pink{background:#ff9ad5;padding:120px 20px}
+    .teal{background:#35e3d0;padding:120px 20px}
+    .title{
+      text-align:center;
+      font-size:56px;
+      margin:0 0 64px 0;
+      letter-spacing:1px;
+    }
 
-.road{max-width:1100px;margin:auto;display:flex;gap:80px;justify-content:center}
-.steps{display:flex;flex-direction:column;gap:28px}
-.step{background:#fff;border:6px solid #000;border-radius:32px;padding:26px;width:360px;font-family:Arial}
+    /* --- about (speech bubble) --- */
+    .about-wrap{
+      max-width:1100px;margin:0 auto;
+      display:flex;gap:60px;align-items:center;justify-content:center;
+    }
+    .bubble{
+      background:#fff;border:6px solid #000;border-radius:44px;
+      padding:40px 46px;
+      font-family:Arial, sans-serif;font-size:18px;line-height:1.55;color:#111;
+      position:relative;max-width:720px;
+    }
+    .bubble:after{
+      content:"";position:absolute;left:-40px;top:60%;
+      width:0;height:0;border-top:20px solid transparent;border-bottom:20px solid transparent;border-right:40px solid #000;
+    }
+    .bubble:before{
+      content:"";position:absolute;left:-32px;top:60%;
+      width:0;height:0;border-top:16px solid transparent;border-bottom:16px solid transparent;border-right:32px solid #fff;
+    }
+    .about-wrap img{width:320px;max-width:40vw}
 
-.faqwrap{max-width:1100px;margin:auto;display:flex;gap:80px}
-.item{background:#fff;border:6px solid #000;border-radius:28px;padding:22px;margin-bottom:22px;cursor:pointer;font-family:Arial}
-.item .a{display:none;margin-top:12px}
-.item.open .a{display:block}
+    /* --- tokenomics stickers --- */
+    .cards{
+      display:flex;justify-content:center;gap:60px;flex-wrap:wrap;
+    }
+    .card{
+      width:260px;background:#fff;border:6px solid #000;border-radius:34px;
+      padding:28px 22px;text-align:center;
+      transform:rotate(-6deg);
+    }
+    .card:nth-child(2){transform:rotate(5deg)}
+    .card:nth-child(3){transform:rotate(-3deg)}
+    .card img{width:120px;margin-bottom:8px}
+    .card h3{margin:8px 0 10px 0;font-size:22px}
+    .card .val{font-size:26px}
 
-.footer{text-align:center;padding:40px;background:#6a2cbf;color:#fff}
+    /* --- roadmap --- */
+    .road-wrap{
+      max-width:1100px;margin:0 auto;
+      display:flex;gap:80px;align-items:flex-start;justify-content:center;
+    }
+    .steps{display:flex;flex-direction:column;gap:28px}
+    .step{
+      width:360px;background:#fff;border:6px solid #000;border-radius:34px;
+      padding:26px 32px;
+      font-family:Arial, sans-serif;font-size:18px;color:#111;
+      transform:rotate(-2deg);
+    }
+    .step:nth-child(2){transform:rotate(2deg)}
+    .step:nth-child(3){transform:rotate(-1deg)}
+    .num{font-family:Arial Black, Arial, sans-serif;font-size:22px;margin-bottom:6px}
+    .road-wrap img{width:260px;max-width:38vw}
 
-@media(max-width:900px){
-.about,.road,.faqwrap{flex-direction:column;align-items:center}
-}
-</style>
+    /* --- FAQ accordion --- */
+    .faq-wrap{
+      max-width:1100px;margin:0 auto;
+      display:flex;gap:80px;align-items:flex-start;justify-content:center;
+    }
+    .faq{flex:1;min-width:320px}
+    .item{
+      background:#fff;border:6px solid #000;border-radius:30px;
+      padding:22px 26px;margin-bottom:22px;
+      font-family:Arial, sans-serif;color:#111;
+      cursor:pointer;
+    }
+    .q{
+      display:flex;justify-content:space-between;align-items:center;
+      font-weight:900;
+    }
+    .a{display:none;margin-top:12px;font-size:16px;line-height:1.45}
+    .item.open .a{display:block}
+    .arrow{font-family:Arial Black, Arial, sans-serif;font-size:22px}
+    .faq-wrap img{width:260px;max-width:38vw}
+
+    .footer{
+      background:#6a2cbf;color:#fff;text-align:center;padding:44px 20px;
+      font-family:Arial, sans-serif;
+    }
+
+    /* --- mobile --- */
+    @media(max-width:900px){
+      .nav{display:none}
+      .hero h1{font-size:44px;top:30%}
+      .cta{top:46%}
+      .hero .char{right:50%;transform:translateX(50%);width:240px}
+      .about-wrap,.road-wrap,.faq-wrap{flex-direction:column;gap:40px;align-items:center}
+      .bubble:after,.bubble:before{display:none}
+      .title{font-size:44px}
+    }
+  </style>
 </head>
 <body>
 
-<section class="hero">
-<div class="logo">MonKes</div>
-<div class="nav">
-<a href="#">How to buy</a><a href="#">Tokenomics</a><a href="#">Roadmap</a><a href="#">FAQ</a>
-</div>
-<h1>MonKes</h1>
-<div class="buy">BUY</div>
-<img src="1333.png">
-<div class="noise"></div>
-</section>
+  <!-- HERO -->
+  <section class="hero" id="home">
+    <div class="brand">BOME AI</div>
+    <nav class="nav">
+      <a href="#how">How to buy</a>
+      <a href="#tokenomics">Tokenomics</a>
+      <a href="#roadmap">Roadmap</a>
+      <a href="#faq">FAQ</a>
+    </nav>
 
-<section class="pink">
-<div class="noise"></div>
-<div class="about">
-<img src="1333.png" width="320">
-<div class="bubble">MonKes is a meme-powered crypto project inspired by iconic internet culture.</div>
-</div>
-<div class="noise"></div>
-</section>
+    <h1>BOME AI</h1>
+    <div class="cta">BUY</div>
+    <img class="char" src="character-1.png" alt="character" />
 
-<section class="turq">
-<div class="noise"></div>
-<h2 class="title">TOKENOMICS</h2>
-<div class="cards">
-<div class="card"><img src="1332.png"><br>NAME<br><b>MonKes</b></div>
-<div class="card"><img src="1332.png"><br>SYMBOL<br><b>$MONKES</b></div>
-<div class="card"><img src="1332.png"><br>TAX<br><b>0% / 0%</b></div>
-</div>
-<div class="noise"></div>
-</section>
+    <div class="px-noise bottom"></div>
+  </section>
 
-<section class="turq">
-<div class="noise"></div>
-<h2 class="title">ROADMAP</h2>
-<div class="road">
-<div class="steps">
-<div class="step">01 Launch & Community</div>
-<div class="step">02 Listings & Growth</div>
-<div class="step">03 Expansion</div>
-</div>
-<img src="1332.png" width="260">
-</div>
-<div class="noise"></div>
-</section>
+  <!-- ABOUT / HOW TO BUY -->
+  <section class="pink" id="how">
+    <div class="px-noise top"></div>
 
-<section class="pink">
-<div class="noise"></div>
-<h2 class="title">FAQ</h2>
-<div class="faqwrap">
-<div>
-<div class="item"><b>What is MonKes?</b><div class="a">Meme crypto project.</div></div>
-<div class="item"><b>Is MonKes free?</b><div class="a">Yes.</div></div>
-<div class="item"><b>How to buy?</b><div class="a">Use BUY button.</div></div>
-</div>
-<img src="1333.png" width="260">
-</div>
-<div class="noise"></div>
-</section>
+    <div class="title">ABOUT US</div>
+    <div class="about-wrap">
+      <img src="character-1.png" alt="character" />
+      <div class="bubble">
+        BOME AI is a meme-powered project inspired by iconic internet culture. Built for community, fun and long-term growth.
+      </div>
+    </div>
 
-<div class="footer">© MonKes</div>
+    <div class="px-noise bottom"></div>
+  </section>
 
-<script>
-document.querySelectorAll('.item').forEach(i=>i.onclick=()=>i.classList.toggle('open'))
-</script>
+  <!-- TOKENOMICS -->
+  <section class="teal" id="tokenomics">
+    <div class="px-noise top"></div>
 
+    <div class="title">TOKENOMICS</div>
+    <div class="cards">
+      <div class="card">
+        <img src="character-2.png" alt="sticker" />
+        <h3>NAME</h3>
+        <div class="val">BOME AI</div>
+      </div>
+      <div class="card">
+        <img src="character-2.png" alt="sticker" />
+        <h3>SYMBOL</h3>
+        <div class="val">$BOME</div>
+      </div>
+      <div class="card">
+        <img src="character-2.png" alt="sticker" />
+        <h3>TAX</h3>
+        <div class="val">0% / 0%</div>
+      </div>
+    </div>
+
+    <div class="px-noise bottom"></div>
+  </section>
+
+  <!-- ROADMAP -->
+  <section class="teal" id="roadmap">
+    <div class="px-noise top"></div>
+
+    <div class="title">ROADMAP</div>
+    <div class="road-wrap">
+      <div class="steps">
+        <div class="step"><div class="num">01</div>Launch & Community</div>
+        <div class="step"><div class="num">02</div>Listings & Growth</div>
+        <div class="step"><div class="num">03</div>Expansion</div>
+      </div>
+      <img src="character-2.png" alt="character" />
+    </div>
+
+    <div class="px-noise bottom"></div>
+  </section>
+
+  <!-- FAQ -->
+  <section class="pink" id="faq">
+    <div class="px-noise top"></div>
+
+    <div class="title">FAQ</div>
+    <div class="faq-wrap">
+      <div class="faq">
+        <div class="item">
+          <div class="q">What is BOME AI?<span class="arrow">+</span></div>
+          <div class="a">A meme-powered project inspired by internet culture.</div>
+        </div>
+        <div class="item">
+          <div class="q">Is BOME AI free?<span class="arrow">+</span></div>
+          <div class="a">Yes, community-driven and open.</div>
+        </div>
+        <div class="item">
+          <div class="q">How to buy?<span class="arrow">+</span></div>
+          <div class="a">Press BUY and follow your own launch flow.</div>
+        </div>
+      </div>
+      <img src="character-1.png" alt="character" />
+    </div>
+
+    <div class="px-noise bottom"></div>
+  </section>
+
+  <div class="footer">© BOME AI</div>
+
+  <script>
+    document.querySelectorAll('.item').forEach(item => {
+      item.addEventListener('click', () => item.classList.toggle('open'));
+    });
+  </script>
 </body>
 </html>
