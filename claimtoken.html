@@ -10,49 +10,106 @@
   <link href="https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Inter:wght@400;600;700;900&display=swap" rel="stylesheet">
 
   <link rel="stylesheet" href="style.css" />
-  <style>
-    .claim-wrap{max-width:1140px;margin:0 auto;padding:40px 18px 80px}
-    .claim-head{text-align:center;margin-bottom:22px}
-    .claim-title{font-family:"Luckiest Guy";font-size:56px;margin:0}
-    .claim-sub{font-family:Inter;font-weight:700;opacity:.75}
-    .claim-box{max-width:560px;margin:0 auto}
-    .field{margin-bottom:14px}
-    .label{font-family:Inter;font-weight:900;font-size:12px;opacity:.7;margin-bottom:6px}
-    .input{width:100%;height:56px;border:4px solid var(--ink);border-radius:14px;padding:0 14px;font-family:Inter;font-weight:900;font-size:18px}
-    .row{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:end}
-    .swap{height:56px;width:56px;border:4px solid var(--ink);border-radius:14px;background:#fff;font-weight:900;font-size:22px}
-    @media(max-width:760px){.row{grid-template-columns:1fr}}
-  </style>
+  <link rel="stylesheet" href="claimtoken.css" />
 </head>
 <body>
   <main class="claim-wrap">
-    <div class="card">
-      <div class="claim-head">
-        <h1 class="claim-title">CLAIM TOKEN</h1>
-        <p class="claim-sub">Claim or bridge your $MONKES</p>
-      </div>
+    <div class="card card-pad">
+      <div class="claim-grid">
+        <div>
+          <h1 class="claim-title">CLAIM TOKEN</h1>
+          <p class="claim-sub">Claim or bridge your $MONKES on Monad</p>
 
-      <div class="claim-box">
-        <div class="row">
-          <div class="field">
-            <div class="label">FROM</div>
-            <input class="input" placeholder="0.0" />
+          <div class="row" style="margin-top:18px">
+            <!-- FROM -->
+            <div class="field">
+              <div class="label">FROM</div>
+
+              <div class="net-select" data-select="from">
+                <button class="net-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="net-left">
+                    <span class="net-ico net-ico--badge" data-ico>ETH</span>
+                    <span class="net-name" data-name>Ethereum</span>
+                  </span>
+                  <span class="chev">▾</span>
+                </button>
+
+                <div class="net-menu" role="listbox">
+                  <button class="net-item" type="button" data-net="Ethereum" data-badge="ETH">
+                    <span class="net-ico net-ico--badge">ETH</span><span>Ethereum</span>
+                  </button>
+                  <button class="net-item" type="button" data-net="Base" data-badge="BASE">
+                    <span class="net-ico net-ico--badge">BASE</span><span>Base</span>
+                  </button>
+                  <button class="net-item" type="button" data-net="BSC" data-badge="BSC">
+                    <span class="net-ico net-ico--badge">BSC</span><span>BSC</span>
+                  </button>
+                  <button class="net-item" type="button" data-net="Monad" data-icon="icon-monad.png">
+                    <img class="net-ico net-ico--img" src="icon-monad.png" alt="Monad"/><span>Monad</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="amount">
+                <input class="input" id="fromAmount" placeholder="0.0" inputmode="decimal" />
+                <button class="mini-chip" type="button" id="maxBtn">MAX</button>
+              </div>
+            </div>
+
+            <button class="swap" type="button" id="swapBtn" aria-label="Swap direction">⇅</button>
+
+            <!-- TO -->
+            <div class="field">
+              <div class="label">TO</div>
+
+              <div class="net-select" data-select="to">
+                <button class="net-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
+                  <span class="net-left">
+                    <img class="net-ico net-ico--img" data-ico src="icon-monad.png" alt="Monad"/>
+                    <span class="net-name" data-name>Monad</span>
+                  </span>
+                  <span class="chev">▾</span>
+                </button>
+
+                <div class="net-menu" role="listbox">
+                  <button class="net-item" type="button" data-net="Monad" data-icon="icon-monad.png">
+                    <img class="net-ico net-ico--img" src="icon-monad.png" alt="Monad"/><span>Monad</span>
+                  </button>
+                  <button class="net-item" type="button" data-net="Ethereum" data-badge="ETH">
+                    <span class="net-ico net-ico--badge">ETH</span><span>Ethereum</span>
+                  </button>
+                  <button class="net-item" type="button" data-net="Base" data-badge="BASE">
+                    <span class="net-ico net-ico--badge">BASE</span><span>Base</span>
+                  </button>
+                  <button class="net-item" type="button" data-net="BSC" data-badge="BSC">
+                    <span class="net-ico net-ico--badge">BSC</span><span>BSC</span>
+                  </button>
+                </div>
+              </div>
+
+              <input class="input" id="toAmount" placeholder="Estimated" disabled />
+            </div>
           </div>
 
-          <button class="swap">⇅</button>
+          <div class="details">
+            <div class="detail"><span>Fee</span><span id="fee">~0.00</span></div>
+            <div class="detail"><span>ETA</span><span id="eta">~1-2 min</span></div>
+            <div class="detail"><span>Route</span><span id="route">Best</span></div>
+          </div>
 
-          <div class="field">
-            <div class="label">TO</div>
-            <input class="input" placeholder="Estimated" disabled />
+          <div class="actions">
+            <a class="btn" href="#" id="claimBtn">CLAIM</a>
+            <a class="btn btn--secondary" href="index.html">BACK</a>
           </div>
         </div>
 
-        <div style="margin-top:18px;display:flex;gap:14px;justify-content:center">
-          <a class="btn" href="#">CLAIM</a>
-          <a class="btn btn--secondary" href="index.html">BACK</a>
+        <div>
+          <img class="char" src="claim-character.png" alt="MonKes Character" />
         </div>
       </div>
     </div>
   </main>
+
+  <script src="claimtoken.js"></script>
 </body>
 </html>
