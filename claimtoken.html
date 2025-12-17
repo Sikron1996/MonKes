@@ -18,23 +18,37 @@
       <div class="claim-grid">
         <div>
           <h1 class="claim-title">CLAIM TOKEN</h1>
-          <p class="claim-sub">Claim your $MonKes tokens according to your NFT MonKes</p>
+          <p class="claim-sub">Claim or bridge your $MONKES on Monad</p>
 
           <div class="row" style="margin-top:18px">
             <!-- FROM -->
             <div class="field">
               <div class="label">FROM</div>
 
-              <div class="net-select" data-select="to">
+              <div class="net-select" data-select="from">
                 <button class="net-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
                   <span class="net-left">
-                    <img class="net-ico net-ico--img" data-ico src="icon-monad.png" alt="Monad $MonKes"/>
-                    <span class="net-name" data-name>Monad $MonKes</span>
+                    <span class="net-ico net-ico--badge" data-ico>ETH</span>
+                    <span class="net-name" data-name>Ethereum</span>
                   </span>
                   <span class="chev">▾</span>
                 </button>
 
-                
+                <div class="net-menu" role="listbox">
+                  <button class="net-item" type="button" data-net="Ethereum" data-badge="ETH">
+                    <span class="net-ico net-ico--badge">ETH</span><span>Ethereum</span>
+                  </button>
+                  <button class="net-item" type="button" data-net="Base" data-badge="BASE">
+                    <span class="net-ico net-ico--badge">BASE</span><span>Base</span>
+                  </button>
+                  <button class="net-item" type="button" data-net="BSC" data-badge="BSC">
+                    <span class="net-ico net-ico--badge">BSC</span><span>BSC</span>
+                  </button>
+                  <button class="net-item" type="button" data-net="Monad" data-icon="icon-monad.png">
+                    <img class="net-ico net-ico--img" src="icon-monad.png" alt="Monad"/><span>Monad</span>
+                  </button>
+                </div>
+              </div>
 
               <div class="amount">
                 <input class="input" id="fromAmount" placeholder="0.0" inputmode="decimal" />
@@ -51,12 +65,27 @@
               <div class="net-select" data-select="to">
                 <button class="net-btn" type="button" aria-haspopup="listbox" aria-expanded="false">
                   <span class="net-left">
-                    <img class="net-ico net-ico--img" data-ico src="icon-monad.png" alt="Monad $MonKes"/>
-                    <span class="net-name" data-name>Monad $MonKes</span>
+                    <img class="net-ico net-ico--img" data-ico src="icon-monad.png" alt="Monad"/>
+                    <span class="net-name" data-name>Monad</span>
                   </span>
                   <span class="chev">▾</span>
                 </button>
 
+                <div class="net-menu" role="listbox">
+                  <button class="net-item" type="button" data-net="Monad" data-icon="icon-monad.png">
+                    <img class="net-ico net-ico--img" src="icon-monad.png" alt="Monad"/><span>Monad</span>
+                  </button>
+                  <button class="net-item" type="button" data-net="Ethereum" data-badge="ETH">
+                    <span class="net-ico net-ico--badge">ETH</span><span>Ethereum</span>
+                  </button>
+                  <button class="net-item" type="button" data-net="Base" data-badge="BASE">
+                    <span class="net-ico net-ico--badge">BASE</span><span>Base</span>
+                  </button>
+                  <button class="net-item" type="button" data-net="BSC" data-badge="BSC">
+                    <span class="net-ico net-ico--badge">BSC</span><span>BSC</span>
+                  </button>
+                </div>
+              </div>
 
               <input class="input" id="toAmount" placeholder="Estimated" disabled />
             </div>
@@ -69,7 +98,7 @@
           </div>
 
           <div class="actions">
-            <a class="btn" href="#" id="claimBtn">Connect Wallet</a>
+            <a class="btn" href="#" id="claimBtn">CLAIM</a>
             <a class="btn btn--secondary" href="index.html">BACK</a>
           </div>
         </div>
@@ -79,13 +108,6 @@
         </div>
       </div>
     </div>
-    <div class="supply">
-        <div class="supply__label">TOTAL SUPPLY:</div>
-        <div class="supply__value">1,000,000,000</div>
-        <div class="supply__value">1 MonKes = 100,000</div>
-      </div>
-    </section>
-  </main>
   </main>
 
   <script src="claimtoken.js"></script>
