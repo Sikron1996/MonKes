@@ -147,3 +147,38 @@
   .swap{width:100%;height:56px}
   .details{grid-template-columns:1fr}
 }
+/* ===== FIX ALIGNMENT & BORDERS ===== */
+:root{
+  --b: 4px;
+}
+
+.row{
+  align-items:center !important;
+}
+
+.input,
+.net-btn,
+.swap,
+.detail{
+  height:56px;
+  border:var(--b) solid var(--ink);
+  box-sizing:border-box;
+}
+
+.swap{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+.mini-chip{
+  height:44px;
+  margin-top:6px;
+  border:var(--b) solid var(--ink);
+  box-sizing:border-box;
+}
+
+.net-ico--badge,
+.net-ico--img{
+  border:var(--b) solid var(--ink);
+}
