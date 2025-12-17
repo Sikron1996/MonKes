@@ -1,33 +1,93 @@
-/* ClaimToken (MonKes style) */
+/* ===============================
+   ClaimToken (MonKes style) FINAL
+   =============================== */
 
-.claim-wrap{max-width:1140px;margin:0 auto;padding:40px 18px 80px}
+:root{
+  --b: 4px;
+}
+
+/* wrapper */
+.claim-wrap{
+  max-width:1140px;
+  margin:0 auto;
+  padding:40px 18px 80px;
+}
+
 .card-pad{padding:26px}
-.claim-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
-.claim-title{font-family:"Luckiest Guy";font-size:56px;margin:0}
-.claim-sub{font-family:Inter, system-ui;font-weight:700;opacity:.75;margin:6px 0 0}
 
-/* layout */
-.row{display:grid;grid-template-columns:1fr auto 1fr;gap:12px;align-items:end;margin-top:18px}
-.field{}
-.label{font-family:Inter, system-ui;font-weight:900;font-size:12px;opacity:.7;margin-bottom:6px}
+/* grid */
+.claim-grid{
+  display:grid;
+  grid-template-columns:1.1fr .9fr;
+  gap:28px;
+  align-items:center;
+}
 
+.claim-title{
+  font-family:"Luckiest Guy";
+  font-size:56px;
+  margin:0;
+}
+
+.claim-sub{
+  font-family:Inter, system-ui;
+  font-weight:700;
+  opacity:.75;
+  margin:6px 0 0;
+}
+
+/* ===============================
+   FORM LAYOUT
+   =============================== */
+
+.row{
+  display:grid;
+  grid-template-columns:1fr auto 1fr;
+  gap:12px;
+  align-items:center;
+  margin-top:18px;
+}
+
+.label{
+  font-family:Inter, system-ui;
+  font-weight:900;
+  font-size:12px;
+  opacity:.7;
+  margin-bottom:6px;
+}
+
+/* inputs */
 .input{
   width:100%;
   height:56px;
-  border:4px solid var(--ink);
+  border:var(--b) solid var(--ink);
   border-radius:14px;
   padding:0 14px;
   font-family:Inter, system-ui;
   font-weight:900;
   font-size:18px;
   outline:none;
+  box-sizing:border-box;
 }
-.input:disabled{opacity:.75;background:#f2f2f2}
 
-.amount{margin-top:10px;display:flex;gap:10px;align-items:center}
+.input:disabled{
+  opacity:.75;
+  background:#f2f2f2;
+}
+
+/* amount row */
+.amount{
+  margin-top:10px;
+  display:flex;
+  gap:10px;
+  align-items:center;
+}
+
+/* MAX button */
 .mini-chip{
   height:44px;
-  border:3px solid var(--ink);
+  margin-top:6px;
+  border:var(--b) solid var(--ink);
   background:#fff;
   border-radius:999px;
   padding:0 12px;
@@ -35,24 +95,36 @@
   font-weight:900;
   cursor:pointer;
   box-shadow:0 4px 0 #00000010;
+  box-sizing:border-box;
 }
+
+/* swap */
 .swap{
-  height:56px;width:56px;
-  border:4px solid var(--ink);
+  height:56px;
+  width:56px;
+  border:var(--b) solid var(--ink);
   border-radius:14px;
   background:#fff;
   font-weight:900;
   font-size:22px;
   cursor:pointer;
   box-shadow:0 6px 0 #00000010;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  box-sizing:border-box;
 }
 
-/* selectors */
+/* ===============================
+   NETWORK SELECTORS
+   =============================== */
+
 .net-select{position:relative}
+
 .net-btn{
   width:100%;
   height:56px;
-  border:4px solid var(--ink);
+  border:var(--b) solid var(--ink);
   border-radius:14px;
   background:#fff;
   padding:0 12px;
@@ -61,11 +133,26 @@
   justify-content:space-between;
   cursor:pointer;
   box-shadow:0 6px 0 #00000010;
+  box-sizing:border-box;
 }
-.net-left{display:flex;align-items:center;gap:10px}
-.net-name{font-family:Inter, system-ui;font-weight:900}
-.chev{font-weight:900;opacity:.6}
 
+.net-left{
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+
+.net-name{
+  font-family:Inter, system-ui;
+  font-weight:900;
+}
+
+.chev{
+  font-weight:900;
+  opacity:.6;
+}
+
+/* icons */
 .net-ico{
   display:inline-flex;
   align-items:center;
@@ -73,35 +160,45 @@
   font-family:Inter, system-ui;
   font-weight:900;
 }
+
 .net-ico--badge{
-  width:36px;height:28px;
-  border:3px solid var(--ink);
+  width:36px;
+  height:28px;
+  border:var(--b) solid var(--ink);
   border-radius:10px;
-  background:linear-gradient(180deg, #ffffff, #f2f2f2);
+  background:linear-gradient(180deg,#ffffff,#f2f2f2);
   font-size:11px;
   letter-spacing:.2px;
-}
-.net-ico--img{
-  width:28px;height:28px;
-  border-radius:10px;
-  border:3px solid var(--ink);
-  background:#fff;
-  object-fit:cover;
+  box-sizing:border-box;
 }
 
+.net-ico--img{
+  width:28px;
+  height:28px;
+  border-radius:10px;
+  border:var(--b) solid var(--ink);
+  background:#fff;
+  object-fit:cover;
+  box-sizing:border-box;
+}
+
+/* dropdown */
 .net-menu{
   position:absolute;
-  left:0; right:0;
+  left:0;
+  right:0;
   top:calc(100% + 10px);
   background:#fff;
-  border:4px solid var(--ink);
+  border:var(--b) solid var(--ink);
   border-radius:16px;
   box-shadow:0 10px 0 #00000012;
   padding:8px;
   display:none;
   z-index:50;
 }
+
 .net-select.open .net-menu{display:block}
+
 .net-item{
   width:100%;
   display:flex;
@@ -109,76 +206,71 @@
   gap:10px;
   border:0;
   background:transparent;
-  padding:10px 10px;
+  padding:10px;
   border-radius:12px;
   font-family:Inter, system-ui;
   font-weight:900;
   cursor:pointer;
 }
+
 .net-item:hover{background:#f5f7ff}
+
+/* ===============================
+   DETAILS
+   =============================== */
 
 .details{
   margin-top:14px;
   display:grid;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns:1fr 1fr 1fr;
   gap:10px;
 }
+
 .detail{
-  border:3px solid var(--ink);
+  height:56px;
+  border:var(--b) solid var(--ink);
   border-radius:14px;
   background:#fff;
-  padding:10px 12px;
+  padding:0 12px;
   font-family:Inter, system-ui;
   font-weight:900;
   display:flex;
+  align-items:center;
   justify-content:space-between;
-  gap:10px;
   box-shadow:0 4px 0 #00000010;
+  box-sizing:border-box;
 }
-.actions{display:flex;gap:14px;justify-content:center;margin-top:18px}
-.char{width:100%;max-width:360px;margin:0 auto;display:block;filter:drop-shadow(0 10px 0 #00000018)}
+
+/* ===============================
+   ACTIONS + CHARACTER
+   =============================== */
+
+.actions{
+  display:flex;
+  gap:14px;
+  justify-content:center;
+  margin-top:18px;
+}
+
+.char{
+  width:100%;
+  max-width:360px;
+  margin:0 auto;
+  display:block;
+  filter:drop-shadow(0 10px 0 #00000018);
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
 
 @media(max-width:900px){
   .claim-grid{grid-template-columns:1fr}
   .claim-title{font-size:42px}
 }
+
 @media(max-width:760px){
   .row{grid-template-columns:1fr}
-  .swap{width:100%;height:56px}
+  .swap{width:100%}
   .details{grid-template-columns:1fr}
-}
-/* ===== FIX ALIGNMENT & BORDERS ===== */
-:root{
-  --b: 4px;
-}
-
-.row{
-  align-items:center !important;
-}
-
-.input,
-.net-btn,
-.swap,
-.detail{
-  height:56px;
-  border:var(--b) solid var(--ink);
-  box-sizing:border-box;
-}
-
-.swap{
-  display:flex;
-  align-items:center;
-  justify-content:center;
-}
-
-.mini-chip{
-  height:44px;
-  margin-top:6px;
-  border:var(--b) solid var(--ink);
-  box-sizing:border-box;
-}
-
-.net-ico--badge,
-.net-ico--img{
-  border:var(--b) solid var(--ink);
 }
