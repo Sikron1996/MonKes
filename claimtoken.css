@@ -274,3 +274,44 @@
   .swap{width:100%}
   .details{grid-template-columns:1fr}
 }
+/* ===== DESKTOP + MOBILE GRID FIX ===== */
+
+.row{
+  display:grid;
+  grid-template-columns: 1fr 64px 1fr;
+  align-items:start;
+  gap:12px;
+}
+
+/* FROM / TO блоки */
+.field{
+  display:flex;
+  flex-direction:column;
+}
+
+/* swap — завжди по центру між колонками */
+.swap{
+  align-self:center;
+  justify-self:center;
+  height:56px;
+  width:56px;
+}
+
+/* щоб TO не їхало */
+.field .input{
+  margin-top:10px;
+}
+
+/* MOBILE */
+@media (max-width: 760px){
+  .row{
+    grid-template-columns: 1fr;
+    gap:16px;
+  }
+
+  .swap{
+    width:100%;
+    height:48px;
+    order:2;
+  }
+}
