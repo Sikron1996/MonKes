@@ -297,3 +297,16 @@ body{
 a {
   -webkit-tap-highlight-color: transparent;
 }
+
+
+/* actions row (Mint + Claim) */
+.actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+  align-items:center;
+}
+.btn--secondary{
+  background:linear-gradient(180deg, #ffffff, #f2f2f2);
+}
+.btn--secondary:hover{filter:brightness(.98)}
