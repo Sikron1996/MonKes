@@ -4,5 +4,9 @@
       "source": "/claimtoken",
       "destination": "/claimtoken.html"
     }
+    {
+      "source": "/inex",
+      "destination": "/index.html"
+    }
   ]
 }
