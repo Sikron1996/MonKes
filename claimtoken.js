@@ -75,7 +75,7 @@ document.addEventListener('click', closeAll);
 function updateEstimate(){
   const val = parseFloat(fromAmount.value || '0');
   if (!isFinite(val)) return;
-  toAmount.value = val ? (val * 100.000).toFixed(4) : '';
+  toAmount.value = val ? (val * 100.00).toFixed(4) : '';
   feeEl.textContent = val ? '~0.5%' : '~0.00';
 }
 
