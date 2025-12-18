@@ -73,7 +73,7 @@ selects.forEach(sel => {
 document.addEventListener('click', closeAll);
 
 function updateEstimate(){
-  const val = parseFloat(fromAmount.value || '100.000');
+  const val = parseFloat(fromAmount.value || '1.0');
   if (!isFinite(val)) return;
   toAmount.value = val ? (val * 100000).toFixed(4) : '';
   feeEl.textContent = val ? '~0.5%' : '~0.00';
@@ -82,7 +82,7 @@ function updateEstimate(){
 fromAmount.addEventListener('input', updateEstimate);
 
 maxBtn.addEventListener('click', () => {
-  fromAmount.value = '100.000';
+  fromAmount.value = '1.0';
   updateEstimate();
 });
 
