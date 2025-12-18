@@ -4,9 +4,5 @@
       "source": "/claimtoken",
       "destination": "/claimtoken.html"
     }
-    {
-      "source": "/index",
-      "destination": "/index.html"
-    }
   ]
 }
